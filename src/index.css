@@ -21,3 +21,35 @@
     animation-delay: 1s;
   }
 }
+
+/* Chrome-specific fix for navbar visibility */
+@supports (-webkit-appearance: none) {
+
+  /* Prevent parent containers from clipping navbar elements */
+  #root {
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  /* Ensure navbar elements are always visible */
+  nav {
+    overflow: visible !important;
+    contain: none !important;
+  }
+
+  /* Force visibility for flex items on large screens */
+  @media (min-width: 1024px) {
+    .hidden.lg\:flex {
+      display: flex !important;
+    }
+  }
+
+  /* Force visibility for Connect Wallet button on medium+ screens */
+  @media (min-width: 768px) {
+    .hidden.md\:block {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+  }
+}

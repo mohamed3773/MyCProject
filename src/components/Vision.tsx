@@ -6,48 +6,49 @@ export default function Vision() {
       phase: 'Phase 1',
       title: 'Genesis Launch',
       status: 'Current',
-      items: ['Launch The First 100 NFT collection', 'Establish Discord community', 'Release initial lore chapters'],
+      isCompleted: true,
+      items: ['Launch the first 100 Genesis NFTs', 'Establish Discord & community channels', 'Release initial lore chapters', 'Host AMA sessions for early adopters'],
     },
     {
       phase: 'Phase 2',
-      title: 'Colony Expansion',
-      status: 'Q1 2025',
-      items: ['Secondary NFT drop: Engineers & Scientists', 'Interactive storytelling platform', 'Community governance implementation'],
+      title: 'MPTS Token Launch',
+      status: 'Q2 2026',
+      items: ['Launch the official MPTS token', 'Publish tokenomics, utilities & whitepaper', 'Deploy smart contract on mainnet', 'Introduce staking & reward systems', 'Add exclusive MPTS holder roles'],
     },
     {
       phase: 'Phase 3',
-      title: 'Mars Marketplace',
-      status: 'Q2 2025',
-      items: ['Launch exclusive merchandise store', 'NFT staking & rewards system', 'Partnerships with space tech companies'],
+      title: 'NFT Expansion',
+      status: 'Q3 2026',
+      items: ['Release 400 new NFTs (total supply becomes 500)', 'Introduce new Genome categories & mutations', 'Upgrade the rarity system', 'Host official reveal event', 'Integrate MPTS utilities with new NFTs'],
     },
     {
       phase: 'Phase 4',
-      title: 'The Red Planet',
-      status: 'Q3 2025',
-      items: ['Virtual Mars colony experience', 'Metaverse integration', 'Full decentralized governance'],
+      title: 'Marketplace Launch & Full Collection',
+      status: 'Q1 2027',
+      items: ['Launch the official NFT Marketplace', 'Enable buying, selling & bidding', 'Integrate MPTS as a payment & fee token', 'Release the remaining 500 NFTs (total 1000)', 'Add rarity filters & collector tools', 'Publish final lore for the complete collection'],
     },
   ];
 
   const teamValues = [
     {
       icon: Target,
-      title: 'Mission Driven',
-      description: 'Building a community united by the vision of interplanetary humanity',
+      title: 'Lore-Driven Mission',
+      description: 'Rebuilding the ancient Martian legacy through storytelling, discovery, and community-driven exploration.',
     },
     {
       icon: Rocket,
-      title: 'Innovation First',
-      description: 'Pushing boundaries in Web3 storytelling and community engagement',
+      title: 'Genesis Innovation',
+      description: 'Using Web3 technology to bring the Martian Genomes to life through evolving chapters, rarity-based abilities, and hidden lore unlocks.',
     },
     {
       icon: Globe,
-      title: 'Inclusive Future',
-      description: 'Creating accessible opportunities for everyone to participate in space exploration',
+      title: 'The Martian Sanctuary',
+      description: 'Creating access points for every user to participate in restoring the lost Sanctuary and uncovering encrypted Martian knowledge.',
     },
     {
       icon: Zap,
-      title: 'Action Oriented',
-      description: 'Delivering value and experiences that matter to our community',
+      title: 'Community Activation',
+      description: 'Empowering holders to shape the story\'s direction, participate in key decisions, and influence the future of the Genomes.',
     },
   ];
 
@@ -61,11 +62,11 @@ export default function Vision() {
           </div>
 
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Vision & <span className="text-[#FF4500]">Roadmap</span>
+            Vision & <span className="text-[#FF4500]">Genesis Roadmap</span>
           </h2>
 
           <p className="text-xl text-white/70 max-w-3xl mx-auto">
-            We're building more than NFTs—we're creating a movement. Join us on our journey to make humanity's Mars dreams a digital reality.
+            We're not just creating NFTs—we're rebuilding the forgotten legacy of Mars. Together, we will guide the 100 Genomes, uncover ancient truths, and restore the final echoes of a lost civilization.
           </p>
         </div>
 
@@ -84,29 +85,31 @@ export default function Vision() {
 
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-white text-center mb-12">Project Roadmap</h3>
-          <div className="grid lg:grid-cols-4 gap-6">
+          <div className="grid lg:grid-cols-4 gap-8">
             {roadmap.map((phase, index) => (
               <div key={phase.phase} className="relative">
                 {index < roadmap.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-[#FF4500] to-transparent"></div>
+                  <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-[#FF4500]/60 to-transparent"></div>
                 )}
-                <div className="bg-gradient-to-br from-[#1F1F1F] to-[#0D0D0D] rounded-2xl p-6 border border-[#FF4500]/30 h-full">
-                  <div className="flex items-center justify-between mb-4">
+                <div className="bg-gradient-to-br from-[#1F1F1F] to-[#0D0D0D] rounded-3xl p-8 border border-[#FF4500]/30 h-full shadow-xl shadow-black/30">
+                  <div className="flex items-start justify-between mb-6">
                     <span className="text-[#FF4500] font-bold text-sm">{phase.phase}</span>
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      phase.status === 'Current'
-                        ? 'bg-[#FF4500]/20 text-[#FF4500]'
-                        : 'bg-white/10 text-white/60'
-                    }`}>
+                    <span className="px-3.5 py-2 rounded-full text-xs font-semibold bg-white/10 text-white/60">
                       {phase.status}
                     </span>
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-4">{phase.title}</h4>
-                  <ul className="space-y-3">
+                  <h4 className="text-2xl font-extrabold text-white mb-6 leading-tight">
+                    {phase.title}
+                  </h4>
+                  <ul className="space-y-4">
                     {phase.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-white/70 text-sm">
-                        <div className="w-1.5 h-1.5 bg-[#FF4500] rounded-full mt-1.5 flex-shrink-0"></div>
-                        <span>{item}</span>
+                      <li key={i} className="flex items-start gap-2.5 text-white/70 text-sm leading-relaxed">
+                        {phase.isCompleted ? (
+                          <span className="text-[#FF4500] mt-0.5 flex-shrink-0 font-semibold">✔</span>
+                        ) : (
+                          <div className="w-1.5 h-1.5 bg-[#FF4500] rounded-full mt-2 flex-shrink-0"></div>
+                        )}
+                        <span className="flex-1">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -116,25 +119,25 @@ export default function Vision() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-[#FF4500]/10 via-[#1F1F1F] to-[#0D0D0D] rounded-3xl p-12 border border-[#FF4500]/30 text-center">
-          <h3 className="text-4xl font-bold text-white mb-6">
+        <div className="bg-gradient-to-br from-[#FF4500]/10 via-[#1F1F1F] to-[#0D0D0D] rounded-3xl p-14 border border-[#FF4500]/30 text-center">
+          <h3 className="text-[2.75rem] font-bold text-white mb-7 leading-tight">
             Be Part of History
           </h3>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
             This is your invitation to join a community that believes in pushing humanity forward. Together, we're not just imagining the future—we're building it.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
             <a
               href="#nft-collection"
-              className="px-8 py-4 bg-gradient-to-r from-[#FF4500] to-[#FF1E56] text-white font-bold rounded-lg hover:shadow-lg hover:shadow-[#FF4500]/20 transition-all duration-300 transform hover:scale-105"
+              className="px-8 py-4 bg-gradient-to-r from-[#FF4500] to-[#FF1E56] text-white font-bold rounded-lg hover:shadow-md hover:shadow-[#FF4500]/15 transition-all duration-300 transform hover:scale-105"
             >
               Mint Your NFT
             </a>
             <a
               href="#community"
-              className="px-8 py-4 bg-[#1F1F1F] border-2 border-[#FF4500] text-white font-bold rounded-lg hover:bg-[#FF4500]/10 transition-all duration-300"
+              className="px-8 py-4 bg-[#1F1F1F] border-2 border-[#FF4500] text-white font-bold rounded-lg hover:bg-[#FF4500]/10 hover:shadow-md hover:shadow-[#FF4500]/15 transition-all duration-300"
             >
-              Jon Community
+              Join Community
             </a>
           </div>
         </div>

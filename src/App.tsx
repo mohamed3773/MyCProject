@@ -13,16 +13,46 @@ import Support from './components/Support';
 import MyNFTs from './components/MyNFTs';
 import SellNFT from './components/SellNFT';
 import ActivityPage from './components/ActivityPage';
+import Whitepaper from './components/Whitepaper';
+import FAQs from './components/FAQs';
+import Terms from './components/Terms';
+import Privacy from './components/Privacy';
+import Cookies from './components/Cookies';
 
 
 // Router imports
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from 'react';
+
+
+function ScrollToHash() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Handle hash navigation (e.g., /#nft-collection)
+    if (location.hash) {
+      // Small delay to ensure content is rendered
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else if (location.pathname === '/') {
+      // Scroll to top when navigating to home without hash
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
+
+  return null;
+}
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen bg-[#0D0D0D]">
         <Navigation />
+        <ScrollToHash />
 
         <Routes>
 
@@ -57,6 +87,13 @@ function App() {
 
           {/* 📜 Full Recent Activity Page */}
           <Route path="/activity" element={<ActivityPage />} />
+
+          {/* 📄 Resources Pages */}
+          <Route path="/whitepaper" element={<Whitepaper />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/cookies" element={<Cookies />} />
 
         </Routes>
       </div>

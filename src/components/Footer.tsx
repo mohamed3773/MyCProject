@@ -2,16 +2,64 @@ import { Rocket, Twitter, MessageCircle, Send, Mail } from 'lucide-react';
 
 export default function Footer() {
   const socialLinks = [
-    { icon: Twitter, label: 'Twitter', href: '#' },
-    { icon: MessageCircle, label: 'Discord', href: '#' },
-    { icon: Send, label: 'Telegram', href: '#' },
-    { icon: Mail, label: 'Email', href: 'mailto:contact@marspioneers2040.com' },
+    { icon: Twitter, label: 'Twitter', href: 'https://x.com/MarsPioneersNFT' },
+    { icon: MessageCircle, label: 'Discord', href: 'https://discord.gg/2buCuUVC' },
+    { icon: Send, label: 'Telegram', href: 'https://t.me/+BXd-ysJ1D8E0ODQy' },
+    { icon: Mail, label: 'Email', href: 'mailto:contact@marspioneers.tech' },
   ];
 
   const footerLinks = {
-    Navigation: ['Home', 'NFT Collection', 'Lore', 'Community'],
-    Resources: ['Whitepaper', 'Roadmap', 'FAQs', 'Terms of Service'],
-    Connect: ['Twitter', 'Discord', 'Newsletter', 'Contact'],
+    Navigation: ['Home', 'NFT Collection', 'Lore', 'Community', 'OpenSea'],
+    Resources: ['Whitepaper', 'OpenSea', 'FAQs', 'Terms of Service'],
+    Connect: ['Twitter', 'Discord', 'Contact'],
+  };
+
+  // Get proper link URL for Connect section
+  const getConnectLinkUrl = (link: string) => {
+    switch (link) {
+      case 'Twitter':
+        return 'https://x.com/MarsPioneersNFT';
+      case 'Discord':
+        return 'https://discord.gg/2buCuUVC';
+      case 'Contact':
+        return 'mailto:contact@marspioneers.tech';
+      default:
+        return '#';
+    }
+  };
+
+  // Get proper link URL for Navigation section
+  const getNavigationLinkUrl = (link: string) => {
+    switch (link) {
+      case 'Home':
+        return '/';
+      case 'NFT Collection':
+        return '/#nft-collection';
+      case 'Lore':
+        return '/#lore';
+      case 'Community':
+        return '/#community';
+      case 'OpenSea':
+        return 'https://opensea.io/0x0a9037401fd7fa6c0937c89a5d504ddb684c4be8';
+      default:
+        return '#';
+    }
+  };
+
+  // Get proper link URL for Resources section
+  const getResourcesLinkUrl = (link: string) => {
+    switch (link) {
+      case 'Whitepaper':
+        return '/whitepaper';
+      case 'OpenSea':
+        return 'https://opensea.io/0x0a9037401fd7fa6c0937c89a5d504ddb684c4be8';
+      case 'FAQs':
+        return '/faqs';
+      case 'Terms of Service':
+        return '/terms';
+      default:
+        return '#';
+    }
   };
 
   return (
@@ -58,7 +106,27 @@ export default function Footer() {
                 {links.map((link) => (
                   <li key={link}>
                     <a
-                      href="#"
+                      href={
+                        category === 'Connect'
+                          ? getConnectLinkUrl(link)
+                          : category === 'Navigation'
+                            ? getNavigationLinkUrl(link)
+                            : category === 'Resources'
+                              ? getResourcesLinkUrl(link)
+                              : '#'
+                      }
+                      target={
+                        (category === 'Connect' && link !== 'Contact') ||
+                          link === 'OpenSea'
+                          ? '_blank'
+                          : undefined
+                      }
+                      rel={
+                        (category === 'Connect' && link !== 'Contact') ||
+                          link === 'OpenSea'
+                          ? 'noopener noreferrer'
+                          : undefined
+                      }
                       className="text-white/60 hover:text-[#FF4500] transition-colors text-sm"
                     >
                       {link}
@@ -77,13 +145,13 @@ export default function Footer() {
               © 2024 MarsPioneers 2040. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="text-white/40 hover:text-[#FF4500] transition-colors">
+              <a href="/privacy" className="text-white/40 hover:text-[#FF4500] transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="text-white/40 hover:text-[#FF4500] transition-colors">
+              <a href="/terms" className="text-white/40 hover:text-[#FF4500] transition-colors">
                 Terms of Service
               </a>
-              <a href="#" className="text-white/40 hover:text-[#FF4500] transition-colors">
+              <a href="/cookies" className="text-white/40 hover:text-[#FF4500] transition-colors">
                 Cookie Policy
               </a>
             </div>
